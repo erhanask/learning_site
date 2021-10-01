@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Admin kayıt</title>
     <link rel="stylesheet" href="{{asset('bootstrap.min.css')}}">
 </head>
 
@@ -15,8 +15,8 @@
         <div class="row">
             <div class="col-md-4 offset-md-4" style="margin-top:4rem;">
 
-                <h4>User Register</h4>
-                <form action="{{ route('user.create') }}" method="POST" autocomplete="off">
+                <h4>Admin Register</h4>
+                <form action="{{ route('admin.create') }}" method="POST" autocomplete="off">
                     @if (Session::get('success'))
                     {{Session::get('success')}}
                     @endif
@@ -46,6 +46,16 @@
                         </span>
                     </div>
                     <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" class="form-control" name="phone" placeholder="Enter Phone"
+                            value="{{old('phone')}}">
+                        <span class="text-danger">
+                            @error('phone')
+                            {{$message}}
+                            @enderror
+                        </span>
+                    </div>
+                    <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" name="password" placeholder="Enter Password"
                             value="{{old('password')}}">
@@ -68,7 +78,7 @@
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Register</button>
                     </div>
-                    <a href="{{route('user.login')}}">I Already Have An Account</a>
+                    <a href="{{route('admin.login')}}">I Already Have An Account</a>
 
                 </form>
 
